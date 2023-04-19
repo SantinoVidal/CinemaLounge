@@ -96,3 +96,67 @@ let segundoCaracter = parseInt(prompt("Ingresa se numero:"));
 let caracteres = sumaCaracteres(primerCaracter, segundoCaracter);
 
 console.log(caracteres);
+
+/** FUNCIONES DE ORDEN SUPERIOR  **/
+//Una función de orden superior es una función que puede recibir por parámetro una función o retornar una función. 
+
+//SINTAXIS: 
+
+/*
+
+function estoEsUnaFuncion(funcion()) {
+    return funcion()
+}
+
+*/
+
+//MÉTODOS DE BÚSQUEDA Y TRANSFORMACIÓN:
+//JS incluye de forma nativa varias funciones de orden superior. 
+//Hay métodos de busqueda y transformación que nos permite operar sobre los arrays. 
+
+//Productos de Almacén: 
+
+class Producto {
+     constructor(nombre, precio) {
+          this.nombre = nombre;
+          this.precio = precio;
+     }
+}
+
+const fideos = new Producto("Fideos", 100);
+const harina = new Producto("Harina", 250);
+const gaseosa = new Producto("Coca Cola", 180);
+const pan = new Producto("Pan", 120);
+
+const arrayProductos = [fideos, harina, gaseosa, pan];
+
+console.log("Productos en Stock: ");
+console.log(arrayProductos);
+
+
+//1) ForEach: recorre el array y ejecuta una función por cada elemento. 
+
+console.log("ForEach:");
+
+arrayProductos.forEach(pepito => {
+     console.log(pepito);
+})
+
+
+arrayProductos.forEach(item => console.log(item.precio));
+
+
+//Find: busca un elemento en el array y retorna el primero que cumpla con la condición. 
+
+const buscado = arrayProductos.find(item => item.nombre === "Coca Cola");
+
+console.log("Método Find: ");
+console.log(buscado);
+
+//El método find retorna el primer elemento que cumpla con la condición, si no lo encuentra retorna: undefined.
+
+//3)Filter: recibe una función comparadora por parámetro y retorna un nuevo array con los elmentos que cumplan con la condición. 
+
+const arrayProductosMenos200 = arrayProductos.filter(item => item.precio < 200);
+console.log("Filter:");
+console.log(arrayProductosMenos200);
