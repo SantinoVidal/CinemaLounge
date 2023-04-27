@@ -1,162 +1,185 @@
-//Proyecto de "Calculadora de promedio de notas" en JS
+//The Cinema Lounge
 
-function calculoDelPromedio(notasIngresadas, cantidadNotas) {
-     return notasIngresadas / cantidadNotas;
-}
-
-alert("Bienvenido a su calculadora de promedio de notas.")
-
-let notasIngresadas = 0;
-
-let cantidadNotas = parseInt(prompt("Por favor, indique la cantidad de notas que desea ingresar: "));
-
-for (let i = 0; i < cantidadNotas; i++) {
-     let nota = parseInt(prompt("Ingrese su nota:"));
-
-     while (nota < 0 || nota > 10) {
-          alert("La nota ingresada no es válida, por favor ingrese una nota válida.");
-          nota = parseInt(prompt("Ingrese su nota:"));
+class Cliente {
+     constructor(nombre, apellido, dni, membresía) {
+          this.nombre = nombre;
+          this.apellido = apellido;
+          this.dni = dni;
+          this.membresía = membresía;
      }
-
-     notasIngresadas = notasIngresadas + nota;
 }
 
-let promedio = calculoDelPromedio(notasIngresadas, cantidadNotas);
-
-console.log("Usted ha obtenido un promedio de notas de: " + promedio);
-
-if (promedio >= 8) {
-     alert("Felicitaciones, usted ha tenido un desempeño excelente!");
-} else if (promedio >= 5) {
-     alert("Usted ha tenido un desempeño aceptable.");
-} else {
-     alert("Usted ha tenido un mal desempeño, y deberá realizar nuevamente los exámenes.");
+class Membresía {
+     constructor(tipo, beneficio, costoMensual) {
+          this.tipo = tipo;
+          this.beneficio = beneficio;
+          this.costoMensual = costoMensual;
+     }
 }
 
-let promedioPlus = parseInt(prompt("Para obtener más información sobre su desempeño, por favor ingrese el resultado de su promedio:"));
+//La membresía "Platinum" 3 productos comestibles de regalo dentro del Cine + prioridad en la selección de asientos + descuento en el estacionamiento + compra de entradas anticipadas.
+//La membresía "Gold" 1 producto comestible de regalo dentro del Cine + compra de entradas anticipadas.
+//La membresía "Standard", no ofrece ningún beneficio.
 
-switch (promedioPlus) {
-     case 10:
-          console.log("Usted ha tenido un desempeño excelente, ha completado todas las consignas y realizado un muy buen uso de la lógica para alcanzar los objetivos propuestos.");
+class Pelicula {
+     constructor(nombre, género, duración, director) {
+          this.nombre = nombre;
+          this.género = género;
+          this.duración = duración;
+          this.director = director;
+     }
+}
+
+class Entrada {
+     constructor(película, cliente, precio, fecha, código, tipoMembresía) {
+          this.película = película;
+          this.cliente = cliente;
+          this.precio = precio;
+          this.fechaDeCompra = fecha || new Date();
+          this.códigoDeEntrada = código;
+          this.membresía = tipoMembresía;
+     }
+}
+
+//Función menú de opciones:
+
+alert("¡Hola, bienvenido/a, gracias por visitar el sitio web de The Cinema Lounge!");
+
+function menu() {
+     let opcion = parseInt(prompt("Ingrese una opción, por favor: \n 1) Registrarse en The Cinema Lounge. \n 2) Baja de cuenta. \n 3) Revisa nuestras películas disponibles. \n 4) Beneficios de la membresía PLATINUM. \n 5) Beneficios de la membresía GOLD. \n 6) Revisar registro de entradas. \n 7) Salir."))
+     return opcion;
+}
+
+function salir() {
+     alert("Gracias por haber visitado nuestro sitio web, te esperamos pronto en las salas de The Cinema Lounge.");
+}
+
+//Membresías:
+
+const platinum = new Membresía("Platinum", "3 productos comestibles de regalo dentro del Cine, prioridad en la selección de asientos, descuento en el estacionamiento, compra de entradas anticipadas (2 meses)", 700);
+const gold = new Membresía("Gold", "1 producto comestible de regalo dentro del Cine, compra de entradas anticipadas (1 mes)", 400);
+const standard = new Membresía();
+
+const arrayMembresias = [];
+
+arrayMembresias.push(platinum);
+arrayMembresias.push(gold);
+arrayMembresias.push(standard);
+
+//Beneficios de membresías:
+
+function beneficiosPlatinum() {
+     alert("Beneficios de membresía PLATINUM: " + platinum.beneficio);
+}
+
+function beneficiosGold() {
+     alert("Beneficios de membresías GOLD: " + gold.beneficio);
+}
+
+//Registro de clientes:
+
+const clienteUno = new Cliente("Evelyn", "García", 12345678, platinum);
+const clienteDos = new Cliente("Santino", "Vidal", 23456789, gold);
+
+const clientesRegistro = [];
+
+clientesRegistro.push(clienteUno);
+clientesRegistro.push(clienteDos);
+
+function registrarse() {
+     let nombre = prompt("Ingrese su nombre:");
+     let apellido = prompt("Ingrese su apellido:");
+     let dni = parseInt(prompt("Ingrese su número de DNI"));
+     let membresía = prompt("Ingrese su tipo de membresía (Standard, Gold, Platinum)");
+
+     const clienteNuevo = new Cliente(nombre, apellido, dni, membresía);
+
+     alert("¡Ud. se ha registrado correctamente! Disfrute de la experiencia Lounge");
+     clientesRegistro.push(clienteNuevo);
+}
+
+console.log(clientesRegistro);
+
+//Baja de cuenta:
+
+function bajaDeCuenta() {
+     let dni = prompt("Ingrese el DNI del cliente:");
+     let cliente = clientesRegistro.find(cliente => cliente.dni === dni);
+     let indice = clientesRegistro.indexOf(cliente);
+     clientesRegistro.splice(indice, 1);
+     console.log(clientesRegistro);
+}
+
+//Películas disponibles:
+
+const peliculaUno = new Pelicula("Super Mario Bros La Película", "Animación", "93 Minutos", "Aaron Horvath, Michael Jelenic");
+const peliculaDos = new Pelicula("Evil Dead El Despertar", "Terror", "97 Minutos", "Lee Cronin");
+const peliculaTres = new Pelicula("Five Nights at Freddy's", "Terror/Suspenso", "124 Minutos", "Emma Tammi");
+const peliculaCuatro = new Pelicula("Suzume", "Animación/Fantasía", "119 Minutos", "Makoto Shinkai");
+const peliculaCinco = new Pelicula("Insidious: The Red Door", "Terror/Misterio", "103 Minutos", "Patrick Wilson");
+
+const peliculasDisponibles = [peliculaUno.nombre, peliculaDos.nombre, peliculaTres.nombre, peliculaCuatro.nombre, peliculaCinco.nombre];
+
+console.log("Peliculas:")
+console.log(peliculaUno);
+console.log(peliculaDos);
+console.log(peliculaTres);
+console.log(peliculaCuatro);
+console.log(peliculaCinco);
+
+//Cartelera:
+
+function cartelera() {
+     alert("Nuestras películas disponibles en éste momento son: " + peliculasDisponibles);
+}
+
+//Entradas:
+
+const totalEntradas = [];
+
+function entradas() {
+     const entradaUno = new Entrada(peliculaCinco, clienteUno, 850, Date(), Math.round(Math.random() * 300000000 + 100000000), platinum);
+     const entradaDos = new Entrada(peliculaTres, clienteDos, 850, Date(), Math.round(Math.random() * 300000000 + 100000000), gold);
+     const entradaNueva = new Entrada(prompt("Ingresa la película que deseas ver:"), parseInt(prompt("Ingrese su número de DNI:")), 850, Date(), Math.round(Math.random() * 300000000 + 100000000), prompt("Ingrese su tipo de membresía:"));
+
+     console.log("Este es el registro de entradas compradas el día de hoy:");
+     console.log(entradaUno, entradaDos, entradaNueva);
+
+     alert("Cuando asistas a nuestras salas, presenta en boletería el siguiente código de entrada: " + entradaNueva.códigoDeEntrada);
+     totalEntradas.push(entradaUno);
+     totalEntradas.push(entradaDos);
+     totalEntradas.push(entradaNueva);
+
+     const totalEntradasDiarias = totalEntradas.reduce((acumulador, entrada) => acumulador + entrada.precio, 0);
+     console.log("El total de dinero acumulado de las entradas diarias es: " + totalEntradasDiarias);
+}
+
+//Ejecutar menú:
+
+let opcion = menu();
+switch (opcion) {
+     case 1:
+          registrarse();
           break;
-     case 9:
-          console.log("Usted ha tenido un desempeño excelente, ha completado todas las consignas y realizado un muy buen uso de la lógica para alcanzar los objetivos propuestos.");
-          break;
-     case 8:
-          console.log("Usted ha tenido un desempeño excelente, ha completado todas las consignas y realizado un muy buen uso de la lógica para alcanzar los objetivos propuestos.");
-          break;
-     case 7:
-          console.log("Usted ha tenido un desempeño aceptable, aún tiene aspectos a mejorar y deberá seguir esforzándose para obtener mejores resultados, pero aún así ha realizado un buen trabajo.");
-          break;
-     case 6:
-          console.log("Usted ha tenido un desempeño aceptable, aún tiene aspectos a mejorar y deberá seguir esforzándose para obtener mejores resultados, pero aún así ha realizado un buen trabajo.");
-          break;
-     case 5:
-          console.log("Usted ha tenido un mal desempeño, y deberá realizar nuevamente los exámenes. No ha cumplido con las consignas, ni ha alcanzado los objetivos propuestos.");
-          break;
-     case 4:
-          console.log("Usted ha tenido un mal desempeño, y deberá realizar nuevamente los exámenes. No ha cumplido con las consignas, ni ha alcanzado los objetivos propuestos.");
+     case 2:
+          bajaDeCuenta();
           break;
      case 3:
-          console.log("Usted ha tenido un mal desempeño, y deberá realizar nuevamente los exámenes. No ha cumplido con las consignas, ni ha alcanzado los objetivos propuestos.");
+          cartelera();
+          break;
+     case 4:
+          beneficiosPlatinum();
+          break;
+     case 5:
+          beneficiosGold();
+          break;
+     case 6:
+          entradas();
+          break;
+     case 7:
+          salir();
           break;
      default:
-          console.log("Usted ha obtenido un promedio pésimo, debería replantearse la elección de la carrera.");
+          alert("Selección incorrecta, intentalo nuevamente.");
           break;
 }
-
-//Prueba objetos y clases JS.
-
-class Comida {
-     constructor(nombre, precio, marca) {
-          this.nombre = nombre;
-          this.precio = precio;
-          this.marca = marca;
-     }
-     aumentoIva() {
-          return this.precio * 1.21;
-     }
-}
-
-const papasFritas = new Comida("Papas Fritas", 550, "McCay's");
-
-console.log(papasFritas);
-console.log(papasFritas.marca);
-console.log(papasFritas.aumentoIva());
-
-//Prueba funcion, y ver el resultado a través de una variable.
-
-function sumaCaracteres(primerCaracter, segundoCaracter) {
-     return primerCaracter + segundoCaracter;
-}
-
-let primerCaracter = parseInt(prompt("Ingresa numero:"));
-let segundoCaracter = parseInt(prompt("Ingresa se numero:"));
-
-let caracteres = sumaCaracteres(primerCaracter, segundoCaracter);
-
-console.log(caracteres);
-
-/** FUNCIONES DE ORDEN SUPERIOR  **/
-//Una función de orden superior es una función que puede recibir por parámetro una función o retornar una función. 
-
-//SINTAXIS: 
-
-/*
-
-function estoEsUnaFuncion(funcion()) {
-    return funcion()
-}
-
-*/
-
-//MÉTODOS DE BÚSQUEDA Y TRANSFORMACIÓN:
-//JS incluye de forma nativa varias funciones de orden superior. 
-//Hay métodos de busqueda y transformación que nos permite operar sobre los arrays. 
-
-//Productos de Almacén: 
-
-class Producto {
-     constructor(nombre, precio) {
-          this.nombre = nombre;
-          this.precio = precio;
-     }
-}
-
-const fideos = new Producto("Fideos", 100);
-const harina = new Producto("Harina", 250);
-const gaseosa = new Producto("Coca Cola", 180);
-const pan = new Producto("Pan", 120);
-
-const arrayProductos = [fideos, harina, gaseosa, pan];
-
-console.log("Productos en Stock: ");
-console.log(arrayProductos);
-
-
-//1) ForEach: recorre el array y ejecuta una función por cada elemento. 
-
-console.log("ForEach:");
-
-arrayProductos.forEach(pepito => {
-     console.log(pepito);
-})
-
-
-arrayProductos.forEach(item => console.log(item.precio));
-
-
-//Find: busca un elemento en el array y retorna el primero que cumpla con la condición. 
-
-const buscado = arrayProductos.find(item => item.nombre === "Coca Cola");
-
-console.log("Método Find: ");
-console.log(buscado);
-
-//El método find retorna el primer elemento que cumpla con la condición, si no lo encuentra retorna: undefined.
-
-//3)Filter: recibe una función comparadora por parámetro y retorna un nuevo array con los elmentos que cumplan con la condición. 
-
-const arrayProductosMenos200 = arrayProductos.filter(item => item.precio < 200);
-console.log("Filter:");
-console.log(arrayProductosMenos200);
