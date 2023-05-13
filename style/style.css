@@ -1,0 +1,644 @@
+/* -----Importación de fuentes----- */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+
+body {
+     background-color: #2d1a4e;
+     background-image: linear-gradient(135deg, #2d1a4e 0%, #24054e 100%);
+}
+
+/* -----Navbar----- */
+
+#logo {
+     width: 12rem;
+     height: 2.5rem;
+     margin-left: 0.9rem;
+}
+
+.nav-link {
+     position: relative;
+     display: block;
+}
+
+.nav-link::after {
+     content: "";
+     opacity: 0;
+     transition: all 0.2s;
+}
+
+.nav-link:hover::after {
+     opacity: 1;
+     height: 2px;
+     width: 100%;
+     background-color: #8200e9;
+     position: absolute;
+     bottom: 0;
+     left: 0;
+}
+
+nav ul {
+     display: flex;
+     flex-direction: row;
+}
+
+#glow {
+     background-color: #7b0bd7;
+     background-image: linear-gradient(160deg, #7b0bd7 0%, #9543df 100%);
+     color: #ffffff;
+     border-radius: 0.3rem;
+     padding: 0.5rem;
+     position: relative;
+     display: flex;
+     justify-content: center;
+}
+
+#glow:hover {
+     background-color: #9543df;
+     background-image: linear-gradient(160deg, #9543df 0%, #7b0bd7 100%);
+     color: #ffffff;
+}
+
+#navbarNav {
+     display: flex;
+     justify-content: flex-end;
+     padding: 0.3rem;
+}
+
+#navbarNav a {
+     color: #ececec;
+     font-size: 1.1rem;
+     font-family: 'Noto Sans', sans-serif;
+     font-weight: 500;
+}
+
+.nav-item {
+     display: flex;
+     justify-content: flex-start;
+     margin-left: 0.5rem;
+     margin-right: 1rem;
+}
+
+/* -----Footer----- */
+
+footer {
+     background-image: url(../img/popcorn.jpg);
+     padding: 1.5rem;
+     font-family: 'Noto Sans', sans-serif;
+     border-top: solid 3px #000000;
+     margin-top: 3rem;
+}
+
+footer h2 {
+     font-size: 2.5rem;
+     text-align: center;
+     color: rgb(255, 255, 255);
+}
+
+.cinema {
+     font-size: 1.5rem;
+     margin-top: 1rem;
+     color: #939393;
+}
+
+footer p {
+     color: rgb(143, 143, 143);
+     font-size: 1rem;
+     text-align: center;
+     margin-top: 1rem;
+}
+
+footer a {
+     text-decoration: none;
+     color: #D4AF37;
+     font-size: 1.5rem;
+}
+
+footer a:hover {
+     color: #f7d76b;
+}
+
+footer h5 {
+     font-size: 2rem;
+}
+
+.redes {
+     display: flex;
+     flex-direction: row;
+     flex-wrap: wrap;
+     justify-content: center;
+     margin-top: 2rem;
+     margin-bottom: 2rem;
+}
+
+.icon {
+     width: 3rem;
+     height: 3rem;
+     margin-left: 1.6rem;
+     margin-right: 1.6rem;
+     margin-bottom: 1rem;
+}
+
+.footerText {
+     text-align: center;
+     word-spacing: 3rem;
+     margin-bottom: 1rem;
+}
+
+.subir {
+     display: flex;
+     flex-direction: row;
+     justify-content: center;
+     margin-bottom: 1rem;
+     line-height: 2.3rem;
+}
+
+.espaciado {
+     display: flex;
+     flex-direction: row;
+     margin: 1rem;
+     margin-top: 1rem;
+     margin-bottom: 1rem;
+}
+
+.subir a {
+     color: #ffffff;
+}
+
+.subir a:hover {
+     color: #bebebe;
+}
+
+/* -----Home----- */
+
+#titulo {
+     display: block;
+     margin: auto;
+     width: 40rem;
+     height: 8rem;
+}
+
+.welcome {
+     box-shadow: 1px 6px 10px black;
+     margin-top: 0rem;
+     margin-bottom: 1.5rem;
+     padding: 3rem;
+     background-color: #000000;
+}
+
+.carousel-item {
+     width: 100%;
+     height: 48rem;
+}
+
+.dimension {
+     box-shadow: 1px 6px 10px black;
+     padding: 1rem;
+     background-image: url(../img/cuatroD.jpg);
+     width: 100%;
+     padding-bottom: 20rem;
+     height: 27rem;
+     margin-top: 2rem;
+     margin-bottom: 2rem;
+}
+
+.cuatroD {
+     margin-top: 2rem;
+     font-family: 'Noto Sans', sans-serif;
+     font-weight: 700;
+     font-size: 3rem;
+}
+
+.anuncioCuatroD1 {
+     margin-left: 3rem;
+     margin-top: 2rem;
+     font-family: 'Noto Sans', sans-serif;
+     font-weight: 600;
+     font-size: 2rem;
+     color: rgb(0, 213, 255);
+}
+
+.anuncioCuatroD {
+     margin-left: 5.8rem;
+     margin-top: 2rem;
+     font-family: 'Noto Sans', sans-serif;
+     font-weight: 500;
+     font-size: 2rem;
+}
+
+li {
+     color: white;
+}
+
+h1 {
+     color: white;
+     text-align: center;
+     display: flex;
+     justify-content: center;
+     font-family: 'Noto Sans', sans-serif;
+     font-size: 1.7rem;
+     font-weight: 500;
+     line-height: 3.3rem;
+}
+
+h2 {
+     color: white;
+}
+
+.lineas {
+     padding: 1rem;
+     background-color: #000000;
+     text-align: center;
+     display: flex;
+     justify-content: center;
+     font-family: 'Noto Sans', sans-serif;
+     font-size: 1.7rem;
+     font-weight: 500;
+     line-height: 3.3rem;
+     margin-top: 2.2rem;
+     margin-bottom: 3rem;
+     text-transform: uppercase;
+     box-shadow: 1px 6px 10px black;
+}
+
+h3 {
+     margin-top: 1rem;
+     margin-bottom: 0.8rem;
+     color: #d11818;
+     font-size: 1.3rem;
+     font-family: 'Noto Sans', sans-serif;
+     font-weight: 1000;
+}
+
+h4 {
+     margin-top: 0.5rem;
+     margin-bottom: 0.7rem;
+     color: #a2a2a2;
+     font-size: 0.9rem;
+     font-family: 'Noto Sans', sans-serif;
+}
+
+#estrenos {
+     display: flex;
+     flex-direction: row;
+     flex-wrap: wrap;
+}
+
+.estren {
+     box-shadow: 1px 6px 10px black;
+     border-radius: 0.3rem;
+     margin-bottom: 1.4rem;
+     margin-left: 1.5rem;
+     margin-right: 1.5rem;
+     padding-top: 0.8rem;
+     padding-bottom: 0.8rem;
+     padding-left: 1rem;
+     padding-right: 1rem;
+     background-image: radial-gradient(circle, #111111, #0d0d0d, #090909, #050505, #000000);
+     text-align: center;
+}
+
+#peliculasDis {
+     display: flex;
+     flex-direction: row;
+     flex-wrap: wrap;
+}
+
+#peliculasCuatroD {
+     display: flex;
+     flex-direction: row;
+     flex-wrap: wrap;
+}
+
+.portada {
+     width: 210px;
+     height: 290px;
+     border: solid #000000 2px;
+     border-radius: 0.3rem;
+}
+
+.colorBoton {
+     color: white;
+     background-color: #8e0303;
+     font-family: 'Noto Sans', sans-serif;
+     margin-top: 0.5rem;
+}
+
+.colorBoton:hover {
+     color: white;
+     background-color: #5f0404;
+}
+
+.membresiaAD {
+     box-shadow: 1px 6px 10px black;
+     padding: 1rem;
+     background-image: url(../img/membresiaAnuncio.jpg);
+     width: 100%;
+     padding-bottom: 20rem;
+     height: 27rem;
+     margin-top: 3rem;
+     margin-bottom: 3rem;
+     text-align: center;
+}
+
+.promo {
+     text-shadow: #000000 10px 0 10px;
+     margin-top: 2rem;
+     font-weight: 1000;
+     font-size: 2.6rem;
+     color: #ffffff;
+     font-family: 'Libre Baskerville', serif;
+}
+
+.promoSub {
+     text-shadow: #000000 10px 0 10px;
+     text-transform: uppercase;
+     margin-top: 2rem;
+     font-weight: 800;
+     font-size: 1.8rem;
+     color: #D4AF37;
+     font-family: 'Noto Sans', sans-serif;
+}
+
+.promoText {
+     text-shadow: #000000 10px 0 10px;
+     margin-top: 2rem;
+     font-weight: 600;
+     font-size: 1.8rem;
+     color: #ffffff;
+     line-height: 3rem;
+}
+
+.promoTextDos {
+     text-shadow: #000000 10px 0 10px;
+     margin-top: 2rem;
+     font-weight: 1000;
+     font-size: 1.8rem;
+     color: #D4AF37;
+}
+
+.infoB {
+     margin-top: 1rem;
+     color: #000000;
+     background-color: #dddddd;
+     font-size: 1rem;
+     font-weight: 600;
+     font-family: 'Noto Sans', sans-serif;
+     box-shadow: 1px 6px 10px black;
+}
+
+.infoB:hover {
+     color: #000000;
+     background-color: #7f7f7f;
+}
+
+/* -----Membresías----- */
+
+.memb {
+     color: #D4AF37;
+     text-align: center;
+     font-family: 'Libre Baskerville', serif;
+     font-size: 3rem;
+     font-weight: 500;
+     background-color: #000000;
+     padding: 1rem;
+     padding-bottom: 2rem;
+     margin-bottom: 0rem;
+}
+
+.title {
+     font-family: 'Libre Baskerville', serif;
+     font-size: 2.5rem;
+     font-weight: 800;
+     text-shadow: #000000 1px 0 2px;
+}
+
+.plt {
+     color: #bebebe;
+}
+
+.gdd {
+     color: #000000;
+}
+
+.membresiasBox {
+     display: flex;
+     flex-direction: column;
+     box-shadow: 1px 6px 10px black;
+     border-radius: 0.3rem;
+     margin-top: 1.3rem;
+     margin-bottom: 2.5rem;
+     padding-top: 0.8rem;
+     padding: 1.5rem;
+     text-align: center;
+     color: #000000;
+     background-image: url(https://images7.alphacoders.com/352/352092.jpg);
+}
+
+.membresiasCard {
+     box-shadow: 1px 6px 10px black;
+     color: #bebebe;
+     line-height: 2rem;
+     border: solid 3px #bebebe;
+     margin-left: 15rem;
+     margin-right: 15rem;
+     padding: 1.5rem;
+     border-radius: 1rem;
+     background-image: linear-gradient(to top, #090909, #070707, #050504, #020202, #000000);
+}
+
+.gdP {
+     color: #000000;
+}
+
+.gd {
+     box-shadow: 1px 6px 10px black;
+     color: #000000;
+     border: solid 3px #000000;
+     background-image: linear-gradient(to top, #d4af37, #c8a432, #bd992d, #b18e28, #a68323);
+}
+
+.stP {
+     color: #ffffff;
+}
+
+.st {
+     box-shadow: 1px 6px 10px black;
+     color: #ffffff;
+     border: solid 3px #ffffff;
+     background-image: linear-gradient(to top, #6c129a, #751a9d, #7e21a0, #8728a4, #902fa7);
+}
+
+
+.gold {
+     padding: 1.5rem;
+     background-image: url(https://static.vecteezy.com/system/resources/previews/001/926/560/non_2x/gold-metallic-background-free-photo.jpg);
+}
+
+.platinum {
+     background-image: url(https://images4.alphacoders.com/839/83944.jpg);
+}
+
+.precioMemb {
+     color: #bebebe;
+}
+
+.btn-primary {
+     box-shadow: 1px 6px 10px black;
+     background-color: #8e0303;
+     color: #ffffff;
+     text-shadow: #000000 1px 0 10px;
+     font-family: 'Noto Sans', sans-serif;
+     font-weight: 600;
+     border: none;
+     margin-top: 1rem;
+     margin-left: 30rem;
+     margin-right: 30rem;
+     padding: 0.5rem;
+}
+
+.btn-primary:hover {
+     color: white;
+     background-color: #5f0404;
+     border: none;
+}
+
+/* -----Lounge----- */
+
+.lounge {
+     color: #D4AF37;
+     text-align: center;
+     font-family: 'Libre Baskerville', serif;
+     font-size: 3rem;
+     font-weight: 500;
+     background-color: #000000;
+     padding: 1rem;
+     padding-top: 4rem;
+     padding-bottom: 0rem;
+     margin-bottom: 0rem;
+}
+
+.loungeA {
+     padding-top: 0rem;
+     padding-bottom: 2rem;
+}
+
+.textLounge {
+     color: rgb(194, 194, 194);
+     text-align: center;
+     font-family: 'Noto Sans', sans-serif;
+     font-size: 2rem;
+     line-height: 3.2rem;
+     font-weight: 500;
+     background-color: #000000;
+     padding: 2.3rem;
+     margin-top: 0rem;
+     margin-bottom: 0rem;
+}
+
+.textLoungeA {
+     padding-bottom: 6rem;
+}
+
+.imgLounge {
+     display: flex;
+     justify-content: center;
+     border: solid 7px #000000;
+     margin-top: 3rem;
+     margin-bottom: 3rem;
+}
+
+/* -----Contacto----- */
+
+.backCont {
+     background-image: url(../img/backContacto.jpg);
+}
+
+.footerCont {
+     margin-top: 7rem;
+}
+
+form {
+     display: flex;
+     flex-direction: row;
+     justify-content: center;
+     margin-top: 4rem;
+     margin-bottom: 4rem;
+     font-family: 'Noto Sans', sans-serif;
+}
+
+form h1 {
+     font-size: 3rem;
+     margin-bottom: 0.7rem;
+}
+
+fieldset {
+     box-shadow: 1px 6px 10px black;
+     text-shadow: #000000 1px 0 10px;
+     background-image: radial-gradient(circle, #111111, #0d0d0d, #090909, #050505, #000000);
+     width: 50rem;
+     border-radius: 2rem;
+     padding: 0.5rem;
+     padding-top: 4rem;
+     padding-bottom: 4rem;
+}
+
+label {
+     font-size: 1.5rem;
+     color: #ffffff;
+     display: flex;
+     margin-left: 1.3rem;
+     justify-content: flex-start;
+}
+
+input {
+     margin: 0.3rem 1rem 0.5rem 1rem;
+}
+
+form input {
+     width: 45rem;
+     height: 2.3rem;
+     margin: 1rem;
+     border-radius: 0.3rem;
+     margin-top: 1rem;
+}
+
+form textarea {
+     width: 45rem;
+     height: 7rem;
+     margin: 1rem;
+     border-radius: 0.3rem;
+     margin-top: 1rem;
+}
+
+form select {
+     width: 45rem;
+     height: 2rem;
+     margin: 1rem;
+     border-radius: 0.3rem;
+     margin-top: 1rem;
+}
+
+.btn-warning {
+     background-image: radial-gradient(circle, #9543df, #8f39dd, #882ddb, #821fd9, #7b0bd7);
+     margin-top: 2rem;
+     font-size: 1rem;
+     font-weight: 600;
+     font-family: 'Noto Sans', sans-serif;
+     box-shadow: 1px 6px 10px black;
+     text-shadow: #000000 1px 0 10px;
+     color: #ffffff;
+     border: none;
+}
+
+.btn-warning:hover {
+     background-image: radial-gradient(circle, #a94aff, #aa4aff, #ab4aff, #ab49ff, #ac49ff);
+}
+
+/* -----Sign Up----- */
+
+
+
+/* -----Carrito----- */
+
