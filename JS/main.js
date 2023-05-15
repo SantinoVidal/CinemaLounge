@@ -1,13 +1,13 @@
 //The Cinema Lounge
 
-/*class Cliente {
+class Cliente {
      constructor(nombre, apellido, dni, membresía) {
           this.nombre = nombre;
           this.apellido = apellido;
           this.dni = dni;
           this.membresía = membresía;
      }
-}*/
+}
 
 class Membresía {
      constructor(tipo, costoMensual) {
@@ -29,20 +29,16 @@ class Pelicula {
      }
 }
 
-//Carrito:
-
-let carrito = [];
-
 //Películas disponibles:
 
-const peliculaUno = new Pelicula("Super Mario Bros La Película", "Animación", "93 Minutos", "Aaron Horvath", "./img/mariobros.jpg", 1);
+const peliculaUno = new Pelicula("Super Mario Bros", "Animación", "93 Minutos", "Aaron Horvath", "./img/mariobros.jpg", 1);
 const peliculaDos = new Pelicula("Evil Dead El Despertar", "Terror", "97 Minutos", "Lee Cronin", "./img/evildead.jpg", 2);
 const peliculaTres = new Pelicula("Five Nights at Freddy's", "Terror/Suspenso", "124 Minutos", "Emma Tammi", "./img/fnaf.jpg", 3);
 const peliculaCuatro = new Pelicula("Suzume", "Animación/Fantasía", "119 Minutos", "Makoto Shinkai", "./img/suzume.jpg", 4);
 const peliculaCinco = new Pelicula("Insidious: The Red Door", "Terror/Misterio", "103 Minutos", "Patrick Wilson", "./img/insidious.jpg", 5);
 const peliculaSeis = new Pelicula("No Respires", "Terror/Suspenso", "88 Minutos", "Federico Álvarez", "./img/norespires.jpg", 6);
 const peliculaSiete = new Pelicula("Estación Zombie", "Terror/Acción", "118 Minutos", "Yeon Sang-ho", "./img/zombie.jpg", 7);
-const peliculaOcho = new Pelicula("Avatar: El Camino del Agua", "Ciencia ficción/Acción", "192 Minutos", "James Cameron", "./img/avatar.jpg", 8);
+const peliculaOcho = new Pelicula("Avatar 2", "Ciencia ficción/Acción", "192 Minutos", "James Cameron", "./img/avatar.jpg", 8);
 const peliculaNueve = new Pelicula("El Exorcista del Papa", "Terror", "103 Minutos", "Julius Avery", "./img/exor.jpg", 9);
 const peliculaDiez = new Pelicula("John Wick 4", "Acción/Neo-noir", "169 Minutos", "Chad Stahelski", "./img/johnwick.jpg", 10);
 const peliculaOnce = new Pelicula("Rápidos y furiosos 10", "Acción/Aventura", "130 Minutos", "Louis Leterrier", "./img/rapidos.jpg", 11);
@@ -54,6 +50,11 @@ const peliculasDisponibles = [peliculaUno, peliculaDos, peliculaTres, peliculaCu
 
 const peliculasCuatroD = [peliculaUno, peliculaDos, peliculaOcho];
 
+//Carrito:
+
+let carrito = [];
+let totalPrecio = 0;
+
 //Creo los div para las películas:
 
 const estrenos = document.getElementById("estrenos");
@@ -62,15 +63,16 @@ peliculasEstreno.forEach(pelicula => {
      const div = document.createElement("div");
      div.classList.add("col-xl-3", "col-md-6", "col-xs-12");
      div.innerHTML = `<div class="estren">
-                         <div class="card-body">
-                              <img class="portada" src="${pelicula.portada}" alt="${pelicula.nombre}">
-                              <h3> ${pelicula.nombre} </h3>
-                              <h4> Género: ${pelicula.género} </h4>
-                              <h4> Duración: ${pelicula.duración} </h4>
-                              <h4> Director/es: ${pelicula.director} </h4>
-                              <button class="btn colorBoton" id="boton ${pelicula.id}"> Comprar entrada </button>
-                         </div>
-                    </div>`;
+     <div class="card-body">
+          <img class="portada" src="${pelicula.portada}" alt="${pelicula.nombre}">
+          <h3>${pelicula.nombre}</h3>
+          <h4>Género: ${pelicula.género}</h4>
+          <h4>Duración: ${pelicula.duración}</h4>
+          <h4>Director/es: ${pelicula.director}</h4>
+          <button class="btn colorBoton" id="boton ${pelicula.id}">Agregar al carrito</button>
+     </div>
+</div>`;
+
      estrenos.appendChild(div);
 });
 
@@ -80,15 +82,16 @@ peliculasDisponibles.forEach(pelicula => {
      const div = document.createElement("div");
      div.classList.add("col-xl-3", "col-md-6", "col-xs-12");
      div.innerHTML = `<div class="estren">
-                         <div class="card-body">
-                              <img class="portada" src="${pelicula.portada}" alt="${pelicula.nombre}">
-                              <h3> ${pelicula.nombre} </h3>
-                              <h4> Género: ${pelicula.género} </h4>
-                              <h4> Duración: ${pelicula.duración} </h4>
-                              <h4> Director/es: ${pelicula.director} </h4>
-                              <button class="btn colorBoton"> Comprar entrada </button>
-                         </div>
-                    </div>`;
+     <div class="card-body">
+          <img class="portada" src="${pelicula.portada}" alt="${pelicula.nombre}">
+          <h3>${pelicula.nombre}</h3>
+          <h4>Género: ${pelicula.género}</h4>
+          <h4>Duración: ${pelicula.duración}</h4>
+          <h4>Director/es: ${pelicula.director}</h4>
+          <button class="btn colorBoton" id="boton ${pelicula.id}">Agregar al carrito</button>
+     </div>
+</div>`;
+
      peliculasDis.appendChild(div);
 });
 
@@ -98,17 +101,161 @@ peliculasCuatroD.forEach(pelicula => {
      const div = document.createElement("div");
      div.classList.add("col-xl-3", "col-md-6", "col-xs-12");
      div.innerHTML = `<div class="estren">
-                         <div class="card-body">
-                              <img class="portada" src="${pelicula.portada}" alt="${pelicula.nombre}">
-                              <h3> ${pelicula.nombre} </h3>
-                              <h4> Género: ${pelicula.género} </h4>
-                              <h4> Duración: ${pelicula.duración} </h4>
-                              <h4> Director/es: ${pelicula.director} </h4>
-                              <button class="btn colorBoton"> Comprar entrada </button>
-                         </div>
-                    </div>`;
+     <div class="card-body">
+          <img class="portada" src="${pelicula.portada}" alt="${pelicula.nombre}">
+          <h3>${pelicula.nombre}</h3>
+          <h4>Género: ${pelicula.género}</h4>
+          <h4>Duración: ${pelicula.duración}</h4>
+          <h4>Director/es: ${pelicula.director}</h4>
+          <button class="btn colorBoton" id="boton ${pelicula.id}">Agregar al carrito</button>
+     </div>
+</div>`;
+
      pelisCuatroD.appendChild(div);
 });
+
+//Función botones comprar ticket:
+
+const botonesComprar = document.querySelectorAll('.colorBoton');
+botonesComprar.forEach((boton) => {
+     boton.addEventListener('click', comprarEntrada);
+
+});
+
+function comprarEntrada(event) {
+     const botonId = event.currentTarget.id;
+     const peliculaId = parseInt(botonId.split(' ')[1]);
+     const peliculaSeleccionada = peliculasDisponibles.find(
+          (pelicula) => pelicula.id === peliculaId
+     );
+
+     if (peliculaSeleccionada) {
+          const peliculaEnCarrito = carrito.find(
+               (pelicula) => pelicula.id === peliculaId
+          );
+
+          if (peliculaEnCarrito) {
+               // La película ya está en el carrito, aumenta la cantidad
+               peliculaEnCarrito.cantidad++;
+               totalPrecio += peliculaSeleccionada.precio;
+
+          } else {
+               // Agrega la película al carrito
+               carrito.push(peliculaSeleccionada);
+          }
+
+          Toastify({
+               text: `Agregado al carrito: ${peliculaSeleccionada.nombre} | Cantidad: ${peliculaSeleccionada.cantidad}`,
+               duration: 3000,
+               gravity: 'top',
+               position: 'right',
+               backgroundColor: 'linear-gradient(to right, #00b09b, #96c93d)',
+               stopOnFocus: true,
+          }).showToast();
+
+          // Actualizar el carrito visualmente
+          actualizarCarrito();
+     } else {
+          Toastify({
+               text: `No se encontró la película con el ID: ${peliculaId}`,
+               duration: 3000,
+               gravity: 'top',
+               position: 'right',
+               backgroundColor: 'linear-gradient(to right, #e91e63, #ff5c8d)',
+               stopOnFocus: true,
+          }).showToast();
+     }
+}
+
+//Agregar al carrito:
+
+function actualizarCarrito() {
+     const itemsCarrito = document.getElementById('items-carrito');
+
+     // Limpiar el contenido anterior del carrito
+     itemsCarrito.innerHTML = '';
+
+     // Agregar cada elemento del carrito al HTML
+     carrito.forEach((pelicula) => {
+          const itemCarrito = document.createElement('div');
+          itemCarrito.className = 'carrito-item';
+          itemCarrito.innerHTML = `
+          <div class="card-body carritoDiv">
+          <img class="portada" src="${pelicula.portada}" alt="${pelicula.nombre}">
+               <h3>${pelicula.nombre}</h3>
+               <h4>Género: ${pelicula.género}</h4>
+               <h4>Duración: ${pelicula.duración}</h4>
+               <h4>Director/es: ${pelicula.director}</h4>
+               <h4>Precio (unidad): ${pelicula.precio}</h4>
+               <h4>Cantidad: ${pelicula.cantidad}</h4>
+               <button class="btn colorBoton2" id="boton ${pelicula.id}">Eliminar del carrito</button>
+          </div>
+          `;
+
+          // Agregar el elemento al carrito
+          itemsCarrito.appendChild(itemCarrito);
+     });
+
+     const carritoVacio = document.getElementById('carritoVacio');
+     if (carrito.length > 0) {
+          carritoVacio.style.display = 'none'; // Ocultar el texto
+     } else {
+          carritoVacio.style.display = 'block'; // Mostrar el texto
+     }
+
+     // Función para eliminar una película del carrito
+     function eliminarDelCarrito(event) {
+          const botonId = event.currentTarget.id;
+          const peliculaId = parseInt(botonId.split(' ')[1]);
+
+          const index = carrito.findIndex((pelicula) => pelicula.id === peliculaId);
+
+          if (index !== -1) {
+               const peliculaEliminada = carrito[index];
+               totalPrecio -= peliculaEliminada.precio * peliculaEliminada.cantidad;
+
+               carrito.splice(index, 1); // Elimina la película del carrito
+
+               Toastify({
+                    text: `Eliminado del carrito: ${peliculaEliminada.nombre}`,
+                    duration: 3000,
+                    gravity: 'top',
+                    position: 'right',
+                    backgroundColor: 'linear-gradient(to right, #e91e63, #ff5c8d)',
+                    stopOnFocus: true,
+               }).showToast();
+
+               // Actualizar el carrito visualmente
+               actualizarCarrito();
+          } else {
+               Toastify({
+                    text: `No se encontró la película con el ID: ${peliculaId}`,
+                    duration: 3000,
+                    gravity: 'top',
+                    position: 'right',
+                    backgroundColor: 'linear-gradient(to right, #e91e63, #ff5c8d)',
+                    stopOnFocus: true,
+               }).showToast();
+          }
+     }
+
+     // Agregar evento a los botones de eliminar del carrito
+     const botonesEliminar = document.querySelectorAll('.colorBoton2');
+     botonesEliminar.forEach((boton) => {
+          boton.addEventListener('click', eliminarDelCarrito);
+     });
+
+     const botonVaciarCarrito = document.getElementById('vaciarCarrito');
+     botonVaciarCarrito.addEventListener('click', vaciarCarrito);
+
+     function vaciarCarrito() {
+          carrito = []; // Vaciar el arreglo del carrito
+          totalPrecio = 0; // Reiniciar el total del precio
+
+          // Actualizar el carrito visualmente
+          actualizarCarrito();
+     }
+}
 
 //Membresías:
 
