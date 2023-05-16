@@ -192,6 +192,17 @@ footer h5 {
      height: 48rem;
 }
 
+iframe {
+     margin-top: 2rem;
+     margin-bottom: 2rem;
+     width: 80vw;
+     height: 85vh;
+     border: solid #000000 3px;
+     border-radius: 0.5rem;
+     display: block;
+     margin: auto;
+}
+
 .dimension {
      box-shadow: 1px 6px 10px black;
      padding: 1rem;

@@ -48,7 +48,7 @@ const peliculasEstreno = [peliculaTres, peliculaCinco, peliculaNueve, peliculaOn
 
 const peliculasDisponibles = [peliculaUno, peliculaDos, peliculaTres, peliculaCuatro, peliculaCinco, peliculaSeis, peliculaSiete, peliculaOcho, peliculaNueve, peliculaDiez, peliculaOnce, peliculaDoce];
 
-const peliculasCuatroD = [peliculaUno, peliculaDos, peliculaOcho];
+const peliculasCuatroD = [peliculaUno, peliculaDos, peliculaOcho, peliculaOnce];
 
 //Carrito:
 
@@ -140,7 +140,7 @@ function comprarEntrada(event) {
                totalPrecio += peliculaSeleccionada.precio;
 
           } else {
-               // Agrega la película al carrito
+               // Agrego la película al carrito
                carrito.push(peliculaSeleccionada);
           }
 
@@ -153,7 +153,7 @@ function comprarEntrada(event) {
                stopOnFocus: true,
           }).showToast();
 
-          // Actualizar el carrito visualmente
+          // Actualizo el carrito visualmente
           actualizarCarrito();
      } else {
           Toastify({
@@ -172,10 +172,10 @@ function comprarEntrada(event) {
 function actualizarCarrito() {
      const itemsCarrito = document.getElementById('items-carrito');
 
-     // Limpiar el contenido anterior del carrito
+     // Limpio el contenido anterior del carrito
      itemsCarrito.innerHTML = '';
 
-     // Agregar cada elemento del carrito al HTML
+     // Agrego cada elemento del carrito al HTML
      carrito.forEach((pelicula) => {
           const itemCarrito = document.createElement('div');
           itemCarrito.className = 'carrito-item';
@@ -192,15 +192,15 @@ function actualizarCarrito() {
           </div>
           `;
 
-          // Agregar el elemento al carrito
+          // Agrego el elemento al carrito
           itemsCarrito.appendChild(itemCarrito);
      });
 
      const carritoVacio = document.getElementById('carritoVacio');
      if (carrito.length > 0) {
-          carritoVacio.style.display = 'none'; // Ocultar el texto
+          carritoVacio.style.display = 'none'; // Ocultar el texto de carrito vacío
      } else {
-          carritoVacio.style.display = 'block'; // Mostrar el texto
+          carritoVacio.style.display = 'block'; // Mostrar el texto de carrito vacío
      }
 
      // Función para eliminar una película del carrito
@@ -225,7 +225,7 @@ function actualizarCarrito() {
                     stopOnFocus: true,
                }).showToast();
 
-               // Actualizar el carrito visualmente
+               // Actualizo el carrito visualmente
                actualizarCarrito();
           } else {
                Toastify({
@@ -239,7 +239,7 @@ function actualizarCarrito() {
           }
      }
 
-     // Agregar evento a los botones de eliminar del carrito
+     // Agrego evento a los botones de eliminar del carrito
      const botonesEliminar = document.querySelectorAll('.colorBoton2');
      botonesEliminar.forEach((boton) => {
           boton.addEventListener('click', eliminarDelCarrito);
@@ -249,12 +249,23 @@ function actualizarCarrito() {
      botonVaciarCarrito.addEventListener('click', vaciarCarrito);
 
      function vaciarCarrito() {
-          carrito = []; // Vaciar el arreglo del carrito
-          totalPrecio = 0; // Reiniciar el total del precio
+          carrito = [];
+          totalPrecio = 0;
 
-          // Actualizar el carrito visualmente
+          // Actualizo el carrito visualmente
           actualizarCarrito();
      }
+
+     // Guardo el carrito en el localStorage
+     let carritoJSON = JSON.stringify(carrito);
+     localStorage.setItem("carritoPeliculas", carritoJSON);
+}
+
+// Verifico si hay un carrito almacenado en el localStorage
+const carritoGuardado = localStorage.getItem("carritoPeliculas");
+if (carritoGuardado) {
+     carrito = JSON.parse(carritoGuardado);
+     actualizarCarrito();
 }
 
 //Membresías:
