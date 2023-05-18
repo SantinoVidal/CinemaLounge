@@ -11,13 +11,6 @@ body {
 
 /* -----Navbar----- */
 
-header {
-     position: fixed;
-     z-index: 100;
-     width: 100%;
-     box-shadow: 1px 3px 10px black;
-}
-
 #logo {
      width: 12rem;
      height: 2.5rem;
