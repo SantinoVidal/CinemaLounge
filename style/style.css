@@ -11,6 +11,13 @@ body {
 
 /* -----Navbar----- */
 
+header {
+     position: fixed;
+     z-index: 100;
+     width: 100%;
+     box-shadow: 1px 3px 10px black;
+}
+
 #logo {
      width: 12rem;
      height: 2.5rem;
@@ -78,6 +85,19 @@ nav ul {
      justify-content: flex-start;
      margin-left: 0.5rem;
      margin-right: 1rem;
+}
+
+.carritoIcon {
+     margin-left: -0.5rem;
+}
+
+#cantidadCarrito {
+     display: flex;
+     justify-content: center;
+     flex-direction: row;
+     font-size: 17px;
+     margin-left: -5px;
+     color: #b65dff;
 }
 
 /* -----Footer----- */
@@ -406,8 +426,8 @@ h4 {
 }
 
 .imgEliminar {
-     width: 2rem;
-     height: 2rem;
+     width: 1.5rem;
+     height: 1.5rem;
 }
 
 /* -----Membresías----- */

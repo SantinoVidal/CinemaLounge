@@ -146,7 +146,7 @@ function comprarEntrada(event) {
 
           Toastify({
                text: `Agregado al carrito: ${peliculaSeleccionada.nombre} | Cantidad: ${peliculaSeleccionada.cantidad}`,
-               duration: 3000,
+               duration: 1500,
                gravity: 'top',
                position: 'right',
                backgroundColor: 'linear-gradient(to right, #00b09b, #96c93d)',
@@ -158,7 +158,7 @@ function comprarEntrada(event) {
      } else {
           Toastify({
                text: `No se encontró la película con el ID: ${peliculaId}`,
-               duration: 3000,
+               duration: 1500,
                gravity: 'top',
                position: 'right',
                backgroundColor: 'linear-gradient(to right, #e91e63, #ff5c8d)',
@@ -186,11 +186,14 @@ function actualizarCarrito() {
                <h4>Género: ${pelicula.género}</h4>
                <h4>Duración: ${pelicula.duración}</h4>
                <h4>Director/es: ${pelicula.director}</h4>
-               <h4>Precio (unidad): ${pelicula.precio}</h4>
+               <h4>Precio unitario: ${pelicula.precio}</h4>
                <h4>Cantidad: ${pelicula.cantidad}</h4>
-               <button class="btn colorBoton2" id="boton ${pelicula.id}">          <img class="imgEliminar" src="./img/basura.png" alt="basura"></button>
+               <button class="btn colorBoton2" id="boton ${pelicula.id}">          <img class="imgEliminar" src="./img/basura.png" alt="Eliminar del carrito"></button>
           </div>
           `;
+
+          const cantidadCarrito = document.getElementById("cantidadCarrito");
+          cantidadCarrito.innerHTML = carrito.length;
 
           // Agrego el elemento al carrito
           itemsCarrito.appendChild(itemCarrito);
@@ -218,7 +221,7 @@ function actualizarCarrito() {
 
                Toastify({
                     text: `Eliminado del carrito: ${peliculaEliminada.nombre}`,
-                    duration: 3000,
+                    duration: 1500,
                     gravity: 'top',
                     position: 'right',
                     backgroundColor: 'linear-gradient(to right, #e91e63, #ff5c8d)',
@@ -230,13 +233,15 @@ function actualizarCarrito() {
           } else {
                Toastify({
                     text: `No se encontró la película con el ID: ${peliculaId}`,
-                    duration: 3000,
+                    duration: 1500,
                     gravity: 'top',
                     position: 'right',
                     backgroundColor: 'linear-gradient(to right, #e91e63, #ff5c8d)',
                     stopOnFocus: true,
                }).showToast();
           }
+          const cantidadCarrito = document.getElementById("cantidadCarrito");
+          cantidadCarrito.innerHTML = carrito.length;
      }
 
      // Agrego evento a los botones de eliminar del carrito
@@ -252,6 +257,9 @@ function actualizarCarrito() {
           carrito = [];
           totalPrecio = 0;
 
+          const cantidadCarrito = document.getElementById("cantidadCarrito");
+          cantidadCarrito.innerHTML = carrito.length;
+          
           // Actualizo el carrito visualmente
           actualizarCarrito();
      }
