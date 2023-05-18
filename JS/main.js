@@ -188,7 +188,7 @@ function actualizarCarrito() {
                <h4>Director/es: ${pelicula.director}</h4>
                <h4>Precio (unidad): ${pelicula.precio}</h4>
                <h4>Cantidad: ${pelicula.cantidad}</h4>
-               <button class="btn colorBoton2" id="boton ${pelicula.id}">Eliminar del carrito</button>
+               <button class="btn colorBoton2" id="boton ${pelicula.id}">          <img class="imgEliminar" src="./img/basura.png" alt="basura"></button>
           </div>
           `;
 
