@@ -259,7 +259,7 @@ function actualizarCarrito() {
 
           const cantidadCarrito = document.getElementById("cantidadCarrito");
           cantidadCarrito.innerHTML = carrito.length;
-          
+
           // Actualizo el carrito visualmente
           actualizarCarrito();
      }

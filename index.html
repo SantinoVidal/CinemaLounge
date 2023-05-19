@@ -189,6 +189,9 @@
           <p>Website developed by Santino Vidal Gallea</p>
      </footer>
 
+     <!-- Link JS -->
+     <script src="./JS/main.js"></script>
+
      <!-- Link Toastify JS -->
      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
@@ -200,8 +203,20 @@
           integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
      </script>
 
-     <!-- Link JS -->
-     <script src="./JS/main.js"></script>
+     <!-- Navbar fija -->
+     <script>
+          window.addEventListener('scroll', function () {
+               var navbar = document.querySelector('.navbar');
+               var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+               if (scrollTop > 0) {
+                    navbar.classList.add('navbar-fixed');
+               } else {
+                    navbar.classList.remove('navbar-fixed');
+               }
+          });
+     </script>
+
 </body>
 
 </html>

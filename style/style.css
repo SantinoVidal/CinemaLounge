@@ -5,11 +5,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
 
 body {
-     background-color: #2d1a4e;
-     background-image: linear-gradient(135deg, #2d1a4e 0%, #24054e 100%);
+     background-color: #1d0c25;
 }
 
 /* -----Navbar----- */
+
+.navbar-fixed {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     z-index: 9999;
+}
 
 #logo {
      width: 12rem;
@@ -30,12 +37,13 @@ body {
 
 .nav-link:hover::after {
      opacity: 1;
-     height: 2px;
+     height: 2.5px;
      width: 100%;
      background-color: #8200e9;
      position: absolute;
      bottom: 0;
      left: 0;
+     transition: 0.4s;
 }
 
 nav ul {
@@ -45,7 +53,6 @@ nav ul {
 
 #glow {
      background-color: #7b0bd7;
-     background-image: linear-gradient(160deg, #7b0bd7 0%, #9543df 100%);
      color: #ffffff;
      border-radius: 0.3rem;
      padding: 0.5rem;
@@ -56,14 +63,14 @@ nav ul {
 
 #glow:hover {
      background-color: #9543df;
-     background-image: linear-gradient(160deg, #9543df 0%, #7b0bd7 100%);
      color: #ffffff;
+     transition: 0.4s;
 }
 
 #navbarNav {
      display: flex;
      justify-content: flex-end;
-     padding: 0.3rem;
+     padding: 0.5rem;
 }
 
 #navbarNav a {
@@ -214,6 +221,7 @@ iframe {
      border-radius: 0.5rem;
      display: block;
      margin: auto;
+     box-shadow: 1px 6px 10px black;
 }
 
 .dimension {
@@ -290,7 +298,7 @@ h2 {
 h3 {
      margin-top: 1rem;
      margin-bottom: 0.8rem;
-     color: #d11818;
+     color: #8200e9;
      font-size: 1.3rem;
      font-family: 'Noto Sans', sans-serif;
      font-weight: 1000;
@@ -344,15 +352,16 @@ h4 {
 }
 
 .colorBoton {
+     text-shadow: #000000 2px 0 10px;
      color: white;
-     background-color: #8e0303;
+     background-color: #7500e9;
      font-family: 'Noto Sans', sans-serif;
      margin-top: 0.5rem;
 }
 
 .colorBoton:hover {
      color: white;
-     background-color: #5f0404;
+     background-color: #330067;
 }
 
 .membresiaAD {
@@ -524,14 +533,8 @@ h4 {
      font-weight: 500;
      background-color: #000000;
      padding: 1rem;
-     padding-top: 4rem;
-     padding-bottom: 0rem;
-     margin-bottom: 0rem;
-}
-
-.loungeA {
-     padding-top: 0rem;
      padding-bottom: 2rem;
+     margin-bottom: 0rem;
 }
 
 .textLounge {
@@ -549,6 +552,19 @@ h4 {
 
 .textLoungeA {
      padding-bottom: 6rem;
+}
+
+.lounge-b {
+     color: #D4AF37;
+     text-align: center;
+     font-family: 'Libre Baskerville', serif;
+     font-size: 3rem;
+     font-weight: 500;
+     background-color: #000000;
+     padding: 1rem;
+     padding-top: 4rem;
+     padding-bottom: 2rem;
+     margin-bottom: 0rem;
 }
 
 .imgLounge {
