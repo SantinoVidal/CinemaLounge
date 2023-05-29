@@ -1,0 +1,22 @@
+[{
+          "comentarios": "' Una experiencia cinematográfica impecable: calidad, comodidad y selección de películas de primer nivel. '",
+          "cliente": "Ximena",
+          "titulo": "Cineasta Crítica",
+          "perfil": "../img/mujer1.jpg",
+          "stars": "../img/5-stars.png"
+     },
+     {
+          "comentarios": "' La elección perfecta para cinéfilos exigentes: proyecciones impecables y un ambiente que te sumerge por completo en el mundo del cine. '",
+          "cliente": "Luciano",
+          "titulo": "Maestro del Análisis Fílmico",
+          "perfil": "../img/hombre1.jpg",
+          "stars": "../img/5-stars.png"
+     },
+     {
+          "comentarios": "' El destino predilecto para los amantes del séptimo arte: salas de cine de alta categoría que ofrecen una experiencia inigualable. '",
+          "cliente": "Alondra",
+          "titulo": "Aficionada al Cine",
+          "perfil": "../img/mujer2.jpg",
+          "stars": "../img/4-stars.png"
+     }
+]

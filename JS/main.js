@@ -1,4 +1,4 @@
-//The Cinema Lounge
+// The Cinema Lounge:
 
 class Cliente {
      constructor(nombre, apellido, dni, membresía) {
@@ -29,7 +29,7 @@ class Pelicula {
      }
 }
 
-//Películas disponibles:
+// Películas disponibles:
 
 const peliculaUno = new Pelicula("Super Mario Bros", "Animación", "93 Minutos", "Aaron Horvath", "./img/mariobros.jpg", 1);
 const peliculaDos = new Pelicula("Evil Dead El Despertar", "Terror", "97 Minutos", "Lee Cronin", "./img/evildead.jpg", 2);
@@ -50,12 +50,12 @@ const peliculasDisponibles = [peliculaUno, peliculaDos, peliculaTres, peliculaCu
 
 const peliculasCuatroD = [peliculaUno, peliculaDos, peliculaOcho, peliculaOnce];
 
-//Carrito:
+// Carrito:
 
 let carrito = [];
 let totalPrecio = 0;
 
-//Creo los div para las películas:
+// Creo los div para las películas:
 
 const estrenos = document.getElementById("estrenos");
 
@@ -114,12 +114,10 @@ peliculasCuatroD.forEach(pelicula => {
      pelisCuatroD.appendChild(div);
 });
 
-//Función botones comprar ticket:
-
+// Función botones comprar ticket:
 const botonesComprar = document.querySelectorAll('.colorBoton');
 botonesComprar.forEach((boton) => {
      boton.addEventListener('click', comprarEntrada);
-
 });
 
 function comprarEntrada(event) {
@@ -138,7 +136,6 @@ function comprarEntrada(event) {
                // La película ya está en el carrito, aumenta la cantidad
                peliculaEnCarrito.cantidad++;
                totalPrecio += peliculaSeleccionada.precio;
-
           } else {
                // Agrego la película al carrito
                carrito.push(peliculaSeleccionada);
@@ -167,8 +164,7 @@ function comprarEntrada(event) {
      }
 }
 
-//Agregar al carrito:
-
+// Agregar al carrito:
 function actualizarCarrito() {
      const itemsCarrito = document.getElementById('items-carrito');
 
@@ -186,9 +182,11 @@ function actualizarCarrito() {
                <h4>Género: ${pelicula.género}</h4>
                <h4>Duración: ${pelicula.duración}</h4>
                <h4>Director/es: ${pelicula.director}</h4>
-               <h4>Precio unitario: ${pelicula.precio}</h4>
+               <h4>Precio unitario: $${pelicula.precio}</h4>
                <h4>Cantidad: ${pelicula.cantidad}</h4>
-               <button class="btn colorBoton2" id="boton ${pelicula.id}">          <img class="imgEliminar" src="./img/basura.png" alt="Eliminar del carrito"></button>
+               <button class="btn colorBoton2" id="boton ${pelicula.id}">
+                    <img class="imgEliminar" src="./img/basura.png" alt="Eliminar del carrito">
+               </button>
           </div>
           `;
 
@@ -216,6 +214,9 @@ function actualizarCarrito() {
           if (index !== -1) {
                const peliculaEliminada = carrito[index];
                totalPrecio -= peliculaEliminada.precio * peliculaEliminada.cantidad;
+
+               // Restaurar la cantidad a 1
+               peliculaEliminada.cantidad = 1;
 
                carrito.splice(index, 1); // Elimina la película del carrito
 
@@ -254,6 +255,11 @@ function actualizarCarrito() {
      botonVaciarCarrito.addEventListener('click', vaciarCarrito);
 
      function vaciarCarrito() {
+          carrito.forEach((pelicula) => {
+               // Restaurar la cantidad a 1
+               pelicula.cantidad = 1;
+          });
+
           carrito = [];
           totalPrecio = 0;
 
@@ -276,19 +282,49 @@ if (carritoGuardado) {
      actualizarCarrito();
 }
 
-//Membresías:
+// Finalizar compra:
+const botonFinalizarCompra = document.getElementById('finalizarCompra');
+botonFinalizarCompra.addEventListener('click', mostrarAlerta);
 
-const platinum = new Membresía("Platinum", 2599);
-const gold = new Membresía("Gold", 2099);
-const standard = new Membresía("Standard", 699);
+function mostrarAlerta() {
+     if (carrito.length === 0) {
+          Toastify({
+               text: 'El carrito está vacío',
+               duration: 1500,
+               gravity: 'top',
+               position: 'right',
+               backgroundColor: 'linear-gradient(to right, #e91e63, #ff5c8d)',
+               stopOnFocus: true,
+          }).showToast();
+     } else {
+          let nombresPeliculas = '';
+          let sumaPrecios = 0;
 
-const arrayMembresias = [];
+          carrito.forEach((pelicula) => {
+               nombresPeliculas += `"${pelicula.nombre}"\n`;
+               sumaPrecios += pelicula.precio * pelicula.cantidad;
+          });
 
-arrayMembresias.push(platinum);
-arrayMembresias.push(gold);
-arrayMembresias.push(standard);
+          Swal.fire({
+               title: '¡Compra realizada!',
+               html: ` Películas en el carrito: <br><b>${nombresPeliculas}</b> <br><br> Precio total de su compra: <b>$${sumaPrecios}</b> <hr> Número de compra: <b>${Math.round(Math.random() * 2000000000000000 + 1000000000000000)}</b> <hr> Presente su <b>número de compra</b> en nuestras boleterías antes de acceder a las salas. <br><br>  ¡Gracias por su compra! <br> <b style="color:#7b0bd7">The Cinema Lounge.</b> `,
+               icon: 'success',
+               confirmButtonText: 'Aceptar',
+          });
 
-//Registro de clientes:
+          // Restaurar la cantidad a 1
+          carrito.forEach((pelicula) => {
+               pelicula.cantidad = 1;
+          });
+
+          // Vaciar el carrito y actualizar visualmente
+          carrito = [];
+          totalPrecio = 0;
+          actualizarCarrito();
+     }
+}
+
+// Registro de clientes:
 
 /*const clienteUno = new Cliente("Evelyn", "García", 12345678, platinum);
 const clienteDos = new Cliente("Santino", "Vidal", 23456789, gold);
