@@ -179,9 +179,7 @@ function actualizarCarrito() {
           <div class="card-body carritoDiv">
           <img class="portada" src="${pelicula.portada}" alt="${pelicula.nombre}">
                <h3>${pelicula.nombre}</h3>
-               <h4>Género: ${pelicula.género}</h4>
                <h4>Duración: ${pelicula.duración}</h4>
-               <h4>Director/es: ${pelicula.director}</h4>
                <h4>Precio unitario: $${pelicula.precio}</h4>
                <h4>Cantidad: ${pelicula.cantidad}</h4>
                <button class="btn colorBoton2" id="boton ${pelicula.id}">
