@@ -913,12 +913,12 @@ form select {
 
 /* ----- Mobile Responsive ----- */
 
-@media (max-width: 767.98px) {
+@media (max-width: 575.98px) {
 
   /* -----Navbar----- */
 
   .navbar {
-    padding-bottom: 0rem;
+    padding: 0.2rem;
   }
 
   .navbar-fixed {
@@ -933,7 +933,7 @@ form select {
     width: 7.2rem;
     height: 2rem;
     margin-left: 1rem;
-    margin-top: 0rem;
+    margin-top: 0.3rem;
     margin-bottom: 0.5rem;
   }
 
@@ -1020,11 +1020,11 @@ form select {
   }
 
   .navbar-toggler-icon {
-    margin-top: -0.5rem;
+    margin-top: 0rem;
     align-items: center;
-    background-color: #882ddb;
-    border: solid 2px #282828;
-    border-radius: 0.2rem;
+    background-color: #9514FF;
+    border: solid 3px #282828;
+    border-radius: 0.3rem;
     padding: 1rem;
     margin-right: 0.15rem;
   }
@@ -1129,7 +1129,7 @@ form select {
   /* -----Home----- */
 
   .carousel-inner {
-    height: 10.9rem;
+    height: 12rem;
   }
 
   #titulo {
@@ -1152,6 +1152,10 @@ form select {
     height: 40rem;
   }
 
+  .carousel-item img {
+    height: 31vh;
+  }
+
   .iframe {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
@@ -1160,8 +1164,8 @@ form select {
   .iframe iframe {
     margin-top: 2rem;
     margin-bottom: 2rem;
-    width: 80vw;
-    height: 35vh;
+    width: 90vw;
+    height: 30vh;
     border: solid #000000 3px;
     border-radius: 0.5rem;
     display: block;
@@ -1174,17 +1178,17 @@ form select {
     padding: 1rem;
     background-image: url(../img/cuatroD.jpg);
     width: 100%;
-    padding-bottom: 20rem;
-    height: 24rem;
+    padding-bottom: 10rem;
+    height: 15rem;
     margin-top: 1rem;
     margin-bottom: 1.5rem;
   }
 
   .cuatroD {
-    margin-top: 3rem;
+    margin-top: 0.5rem;
     font-family: "Noto Sans", sans-serif;
     font-weight: 700;
-    font-size: 1.4rem;
+    font-size: 1.1rem;
   }
 
   .anuncioCuatroD1 {
@@ -1192,7 +1196,7 @@ form select {
     margin-top: 1rem;
     font-family: "Noto Sans", sans-serif;
     font-weight: 600;
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     line-height: 1.5rem;
     color: rgb(0, 213, 255);
   }
@@ -1202,7 +1206,7 @@ form select {
     margin-top: 1rem;
     font-family: "Noto Sans", sans-serif;
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 
   li {
@@ -1268,7 +1272,7 @@ form select {
     margin-left: 4.5rem;
     width: 15rem;
     height: 24rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
     box-shadow: 1px 6px 10px black;
     border-radius: 0.3rem;
     padding-top: 0.8rem;
@@ -1321,8 +1325,7 @@ form select {
     padding: 1rem;
     background-image: url(../img/membresiaAnuncio.jpg);
     width: 100%;
-    padding-bottom: 20rem;
-    height: 24rem;
+    height: 18rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
     text-align: center;
@@ -1330,9 +1333,9 @@ form select {
 
   .promo {
     text-shadow: #000000 10px 0 10px;
-    margin-top: 1rem;
+    margin-top: 0.4rem;
     font-weight: 1000;
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     color: #ffffff;
     font-family: "Libre Baskerville", serif;
   }
@@ -1342,7 +1345,7 @@ form select {
     text-transform: uppercase;
     margin-top: 1rem;
     font-weight: 800;
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     color: #d4af37;
     font-family: "Noto Sans", sans-serif;
   }
@@ -1351,16 +1354,16 @@ form select {
     text-shadow: #000000 10px 0 10px;
     margin-top: 1rem;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.8rem;
     color: #ffffff;
-    line-height: 1.8rem;
+    line-height: 1.5rem;
   }
 
   .promoTextDos {
     text-shadow: #000000 10px 0 10px;
     margin-top: 1rem;
     font-weight: 1000;
-    font-size: 1rem;
+    font-size: 0.8rem;
     color: #d4af37;
   }
 
@@ -1433,7 +1436,7 @@ form select {
     border-radius: 0.3rem;
     margin: auto;
     margin-top: 1.5rem;
-    margin-bottom: -0.2rem;
+    margin-bottom: 0rem;
     padding: 1.5rem;
     text-align: center;
     color: #000000;
@@ -1733,6 +1736,7 @@ form select {
     padding-left: 0rem;
     padding-right: 0rem;
     box-shadow: 1px 6px 10px black;
+    width: 26rem;
   }
 
   .carritoDiv {
