@@ -4,6 +4,12 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap");
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   /*
 * Created with https://www.css-gradient.com
